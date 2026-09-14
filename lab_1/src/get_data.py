@@ -1,3 +1,5 @@
+"""Модуль для записи данных из файла в переменную."""
+
 import argparse
 import pathlib
 
@@ -5,7 +7,7 @@ def get_data() -> str:
     """
     Получает путь к файлу из аргументов командной строки.
     Записывает данные из файла в переменную.
-    :return text: данные считанные из файла.
+    :return: данные считанные из файла.
     """
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data-path", type=pathlib.Path)
