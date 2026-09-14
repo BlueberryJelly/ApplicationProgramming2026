@@ -3,3 +3,4 @@
 *.pdb
 
 *.venv
+__pycache__
