@@ -28,3 +28,4 @@ def read_file(filename: str) -> str:
         raise FileReadError(
             f"Не удалось прочитать файл '{filename}': {error}"
         ) from error
+    

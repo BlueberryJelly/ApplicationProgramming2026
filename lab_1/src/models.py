@@ -13,3 +13,4 @@ class Form:
     birth_date: str
     contact: str
     city: str
+    
