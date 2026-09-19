@@ -7,10 +7,10 @@ FIELD_RE: re.Pattern[str] = re.compile(
     r"^([^:\n]+):[ \t]*(.*)$", re.MULTILINE
 )
 
-NAME_RE: re.Pattern[str] = re.compile(r"[А-ЯЁ][а-яё]+(?:-[А-ЯЁ][а-яё]+)?")
+NAME_RE: re.Pattern[str] = re.compile(r"^[А-ЯЁ][а-яё]+(?:-[А-ЯЁ][а-яё]+)*$")
 
 GENDER_RE: re.Pattern[str] = re.compile(
-    r"М|м|Мужской|мужской|Ж|ж|Женский|женский"
+    r"^(?:Мужской|мужской|Женский|женский|[МмЖж])$"
 )
 
 DATE_RE: re.Pattern[str] = re.compile(
@@ -18,7 +18,7 @@ DATE_RE: re.Pattern[str] = re.compile(
     r"(?P<sep>[/.-])"
     r"(?P<month>0?[1-9]|1[0-2])"
     r"(?P=sep)"
-    r"(?P<year>19\d{2}|20[0-2][0-6])"
+    r"(?P<year>19\d{2}|20[01]\d|202[0-6])"
 )
 
 PHONE_RE: re.Pattern[str] = re.compile(
@@ -30,9 +30,9 @@ PHONE_RE: re.Pattern[str] = re.compile(
 )
 
 EMAIL_RE: re.Pattern[str] = re.compile(
-    r"[A-Za-z0-9._%+-]{1,64}@(?:gmail\.com|mail\.ru|yandex\.ru)"
+    r"^[A-Za-z0-9._%+-]{1,64}@(?:gmail\.com|mail\.ru|yandex\.ru)$"
 )
 
 CITY_RE: re.Pattern[str] = re.compile(
-    r"(?:г\. )?[А-ЯЁ][а-яё]+(?:[- ][А-Яа-яЁё]+)*"
+    r"^(?:г\. )?[А-ЯЁ][а-яё]+(?:[- ][А-ЯЁ][а-яё]+)*$"
 )
