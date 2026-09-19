@@ -3,6 +3,7 @@
 import re
 
 BLOCK_SEPARATOR_RE: re.Pattern[str] = re.compile(r"\n\s*\n")
+
 FIELD_RE: re.Pattern[str] = re.compile(
     r"^([^:\n]+):[ \t]*(.*)$", re.MULTILINE
 )
