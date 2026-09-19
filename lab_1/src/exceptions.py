@@ -9,5 +9,9 @@ class ProfileParseError(ProfileError):
     """Анкету не удалось разобрать (например, нет обязательных полей)."""
 
 
+class ProfileValidationError(ProfileError):
+    """Значение одного из полей анкеты не соответствует формату."""
+
+
 class FileReadError(Exception):
     """Файл не удалось прочитать."""
