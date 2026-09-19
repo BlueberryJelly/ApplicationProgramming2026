@@ -60,19 +60,19 @@ def is_valid_city(value: str) -> bool:
     return CITY_RE.fullmatch(value) is not None
 
 
-def validate_form(Form: Form) -> None:
+def validate_form(form: Form) -> None:
     """Проверить все поля анкеты.
 
-    :param Form: анкета.
+    :param form: анкета.
     :raises FormValidationError: если какое-либо поле некорректно.
     """
     checks = (
-        ("Фамилия", Form.surname, is_valid_name),
-        ("Имя", Form.name, is_valid_name),
-        ("Пол", Form.gender, is_valid_gender),
-        ("Дата рождения", Form.birth_date, is_valid_date),
-        ("Номер телефона или email", Form.contact, is_valid_contact),
-        ("Город", Form.city, is_valid_city),
+        ("Фамилия", form.surname, is_valid_name),
+        ("Имя", form.name, is_valid_name),
+        ("Пол", form.gender, is_valid_gender),
+        ("Дата рождения", form.birth_date, is_valid_date),
+        ("Номер телефона или email", form.contact, is_valid_contact),
+        ("Город", form.city, is_valid_city),
     )
     for label, value, check in checks:
         if not check(value):

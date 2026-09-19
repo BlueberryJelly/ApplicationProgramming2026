@@ -12,7 +12,7 @@ class NameCounter:
 
     def __init__(self) -> None:
         """Создать пустой счётчик."""
-        self._counter: Counter = Counter()
+        self._counter: Counter[str] = Counter()
 
     def add(self, name: str) -> None:
         """Учесть одно вхождение имени."""
@@ -47,9 +47,9 @@ def count_names(text: str) -> NameCounter:
     counter = NameCounter()
     for block in split_blocks(text):
         try:
-            Form = parse_block(block)
-            validate_form(Form)
+            form = parse_block(block)
+            validate_form(form)
         except FormError:
             continue
-        counter.add(Form.name)
+        counter.add(form.name)
     return counter
