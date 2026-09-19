@@ -1,15 +1,15 @@
 """Собственные исключения программы."""
 
 
-class ProfileError(Exception):
+class FormError(Exception):
     """Базовый класс для ошибок, связанных с анкетой."""
 
 
-class ProfileParseError(ProfileError):
+class FormParseError(FormError):
     """Анкету не удалось разобрать (например, нет обязательных полей)."""
 
 
-class ProfileValidationError(ProfileError):
+class FormValidationError(FormError):
     """Значение одного из полей анкеты не соответствует формату."""
 
 

@@ -2,9 +2,9 @@
 
 from datetime import date
 
-from exceptions import ProfileValidationError
-from models import Profile
-from patterns import (
+from src.exceptions import FormValidationError
+from src.models import Form
+from src.patterns import (
     CITY_RE,
     DATE_RE,
     EMAIL_RE,
@@ -60,23 +60,23 @@ def is_valid_city(value: str) -> bool:
     return CITY_RE.fullmatch(value) is not None
 
 
-def validate_profile(profile: Profile) -> None:
+def validate_form(Form: Form) -> None:
     """Проверить все поля анкеты.
 
-    :param profile: анкета.
-    :raises ProfileValidationError: если какое-либо поле некорректно.
+    :param Form: анкета.
+    :raises FormValidationError: если какое-либо поле некорректно.
     """
     checks = (
-        ("Фамилия", profile.surname, is_valid_name),
-        ("Имя", profile.name, is_valid_name),
-        ("Пол", profile.gender, is_valid_gender),
-        ("Дата рождения", profile.birth_date, is_valid_date),
-        ("Номер телефона или email", profile.contact, is_valid_contact),
-        ("Город", profile.city, is_valid_city),
+        ("Фамилия", Form.surname, is_valid_name),
+        ("Имя", Form.name, is_valid_name),
+        ("Пол", Form.gender, is_valid_gender),
+        ("Дата рождения", Form.birth_date, is_valid_date),
+        ("Номер телефона или email", Form.contact, is_valid_contact),
+        ("Город", Form.city, is_valid_city),
     )
     for label, value, check in checks:
         if not check(value):
-            raise ProfileValidationError(
+            raise FormValidationError(
                 f"Некорректное поле '{label}': '{value}'"
             )
         

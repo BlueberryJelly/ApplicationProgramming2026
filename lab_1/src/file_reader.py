@@ -1,6 +1,6 @@
 """Чтение файла с анкетами."""
 
-from exceptions import FileReadError
+from src.exceptions import FileReadError
 
 
 def read_file(filename: str) -> str:

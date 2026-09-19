@@ -1,8 +1,8 @@
 """Разбор текста файла на отдельные анкеты."""
 
-from exceptions import ProfileParseError
-from models import Profile
-from patterns import BLOCK_SEPARATOR_RE, FIELD_RE
+from src.exceptions import FormParseError
+from src.models import Form
+from src.patterns import BLOCK_SEPARATOR_RE, FIELD_RE
 
 LABELS: dict[str, str] = {
     "Фамилия": "surname",
@@ -24,12 +24,12 @@ def split_blocks(text: str) -> list[str]:
     return [block for block in blocks if block.strip()]
 
 
-def parse_block(block: str) -> Profile:
+def parse_block(block: str) -> Form:
     """Преобразовать блок текста в анкету.
 
     :param block: текст одной анкеты.
-    :return: объект Profile.
-    :raises ProfileParseError: если в блоке нет обязательных полей.
+    :return: объект Form.
+    :raises FormParseError: если в блоке нет обязательных полей.
     """
     fields: dict[str, str] = {}
     for label, value in FIELD_RE.findall(block):
@@ -39,7 +39,7 @@ def parse_block(block: str) -> Profile:
 
     missing = [label for label, key in LABELS.items() if key not in fields]
     if missing:
-        raise ProfileParseError(
+        raise FormParseError(
             "Не найдены поля: " + ", ".join(missing)
         )
-    return Profile(**fields)
+    return Form(**fields)
