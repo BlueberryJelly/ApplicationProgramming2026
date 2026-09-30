@@ -1,6 +1,6 @@
 """Скачивание обложек книг с одним из ключевых слов в названии.
 
-Запуск: python main.py --keywords ...
+Запуск: python main.py --covers_amount ... --keywords ... --covers-out-dir ...
 """
 
 import sys
@@ -14,8 +14,10 @@ def main() -> int:
     
     :return: код завершения (0 - успех, 1 - ошибка).
     """
-    keys: list[str] = get_args().keywords
-    print(keys, sep="\n")
+    covers_amount = get_args().covers_amount
+    keywords = get_args().keywords
+    covers_out_dir = get_args().covers_out_dir
+    print(covers_amount, keywords, covers_out_dir, sep="\n")
     return 0
 
 
