@@ -6,7 +6,7 @@
 import sys
 from src.context import get_args
 
-MAIN_PAGE_REF = "https://books.toscrape.com/"
+MAIN_PAGE_URL = "https://books.toscrape.com/"
 
 
 def main() -> int:
