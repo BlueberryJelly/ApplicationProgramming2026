@@ -4,7 +4,7 @@
 """
 
 import sys
-from src.context import get_args
+from src.context import parse_arguments
 
 MAIN_PAGE_URL = "https://books.toscrape.com/"
 
@@ -14,9 +14,9 @@ def main() -> int:
     
     :return: код завершения (0 - успех, 1 - ошибка).
     """
-    covers_amount: int = get_args().covers_amount
-    keywords: list[str] = get_args().keywords
-    covers_out_dir: str = get_args().covers_out_dir
+    covers_amount = parse_arguments().covers_amount
+    keywords = parse_arguments().keywords
+    covers_out_dir = parse_arguments().covers_out_dir
     print(covers_amount, keywords, covers_out_dir, sep="\n")
     return 0
 
