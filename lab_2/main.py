@@ -14,9 +14,9 @@ def main() -> int:
     
     :return: код завершения (0 - успех, 1 - ошибка).
     """
-    covers_amount = get_args().covers_amount
-    keywords = get_args().keywords
-    covers_out_dir = get_args().covers_out_dir
+    covers_amount: int = get_args().covers_amount
+    keywords: list[str] = get_args().keywords
+    covers_out_dir: str = get_args().covers_out_dir
     print(covers_amount, keywords, covers_out_dir, sep="\n")
     return 0
 
