@@ -23,8 +23,8 @@ def parse_arguments() -> argparse.Namespace:
 
     args.keywords = [keyword.strip().lower() for keyword in args.keywords if keyword.strip()]
 
-    if not (args.covers_out_dir.exists(follow_symlinks=False) and
-            args.covers_out_dir.is_dir(follow_symlinks=False)):
+    if not (args.covers_out_dir.exists() and
+            args.covers_out_dir.is_dir()):
         parser.error("--covers-out-dir должен существовать и быть директорией")
 
     return args
