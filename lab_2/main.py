@@ -4,7 +4,7 @@
 """
 
 import sys
-from src.context import parse_arguments
+from lab_2.src.cli import parse_arguments
 
 MAIN_PAGE_URL = "https://books.toscrape.com/"
 
