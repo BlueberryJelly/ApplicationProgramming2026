@@ -22,7 +22,7 @@ def parse_arguments() -> argparse.Namespace:
         help=f"Сколько обложек скачать (по умолчанию {DEFAULT_COVERS_AMOUNT})."
     )
     parser.add_argument(
-        "--keywords", nargs="+", type=str,
+        "--keywords", type=str,
         help="Одно или несколько ключевых слов для поиска в названии."
     )
     parser.add_argument(
