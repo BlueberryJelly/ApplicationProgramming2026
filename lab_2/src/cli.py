@@ -22,7 +22,7 @@ def parse_arguments() -> argparse.Namespace:
         help=f"Сколько обложек скачать (по умолчанию {DEFAULT_COVERS_AMOUNT})."
     )
     parser.add_argument(
-        "--keywords", nargs="+", type=str,
+        "--keywords", nargs="*", type=str,
         help="Одно или несколько ключевых слов для поиска в названии."
     )
     parser.add_argument(
@@ -36,6 +36,7 @@ def parse_arguments() -> argparse.Namespace:
     if args.covers_out_dir.exists() and not args.covers_out_dir.is_dir():
         parser.error("--covers-out-dir должен быть директорией.")
 
-    args.keywords = [word.strip().lower() for word in args.keywords
-                     if word.strip()]
+    if args.keywords != None:
+        args.keywords = [word.strip().lower() for word in args.keywords
+                         if word.strip()]
     return args
