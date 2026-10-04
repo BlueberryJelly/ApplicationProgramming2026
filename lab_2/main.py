@@ -35,7 +35,7 @@ def main() -> int:
     :return: код завершения (0 - успех, 1 - ошибка или ничего не найдено)
     """
     logging.basicConfig(level=logging.INFO,
-                        format="%(levelname)s: %(message)s")
+                        format="%(asctime)s %(levelname)s %(name)s: %(message)s")
     args = parse_arguments()
     out_dir = args.covers_out_dir
     covers_dir = out_dir / COVERS_SUBDIR
