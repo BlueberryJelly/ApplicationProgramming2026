@@ -36,7 +36,7 @@ def parse_arguments() -> argparse.Namespace:
     if args.covers_out_dir.exists() and not args.covers_out_dir.is_dir():
         parser.error("--covers-out-dir должен быть директорией.")
 
-    if args.keywords != None:
+    if args.keywords is not None:
         args.keywords = [word.strip().lower() for word in args.keywords
                          if word.strip()]
     return args
