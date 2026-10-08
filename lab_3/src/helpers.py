@@ -18,6 +18,14 @@ class Color:
         self.green = green
         self.red = red
 
+    @property
+    def value(self) -> tuple[int, int, int]:
+        """Вернуть значение цвета в виде набора BGR.
+
+        :return: кортеж из трёх цветовых каналов BGR
+        """
+        return [self.blue, self.green, self.red]
+
 
 class Frame:
     """Класс хранит отступы."""
