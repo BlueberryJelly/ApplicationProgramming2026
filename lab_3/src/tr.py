@@ -2,6 +2,10 @@
 наложение рамки, изменение последовательности каналов"""
 
 import numpy as np
+import cv2
+
+from helpers import Color, Frame
+
 
 def reflect(img: np.ndarray, vertical: bool = True) -> np.ndarray:
     """Отразить изображение по вертикали или по горизонтали.
