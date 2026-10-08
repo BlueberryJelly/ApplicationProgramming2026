@@ -1,5 +1,6 @@
 """Классы для хранения цвета. Класс для хранения отступов."""
 
+from dataclasses import dataclass
 
 class Color:
     """Класс хранит данные о цвете в формате BGR."""
@@ -27,19 +28,11 @@ class Color:
         return [self.blue, self.green, self.red]
 
 
+@dataclass
 class Frame:
     """Класс хранит отступы."""
 
-    def __init__(self, top: int, bottom: int,
-                 left: int, right: int):
-        """Инициализировать поля класса.
-
-        :param top: отступ сверху
-        :param bottom: отступ снизу
-        :param left: отступ слева
-        :param right: отступ справа
-        """
-        self.top = top
-        self.bottom = bottom
-        self.left = left
-        self.right = right
+    top: int
+    bottom: int
+    left: int
+    right: int
