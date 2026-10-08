@@ -14,7 +14,7 @@ def reflect(img: np.ndarray, vertical: bool = True) -> np.ndarray:
     """Отразить изображение по вертикали или по горизонтали.
 
     :param img: изображение в виде массива
-    :param vertical: если True — отразить по вертикали, иначе по горизонтали
+    :param vertical: если True - отразить по вертикали, иначе по горизонтали
     :return: отражённое изображение
     """
     if vertical:
