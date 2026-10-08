@@ -12,8 +12,7 @@ class Color:
         :param red: красный цвет
         :raises ValueError: значение цвета вне диапазона 0–255
         """
-        if any((blue < 0, green < 0, red < 0,
-                blue > 255, green > 255, red > 255)):
+        if not (0 <= blue <= 255 and 0 <= green <= 255 and 0 <= red <= 255):
             raise ValueError("Значение цвета должно быть в диапазоне от 0 до 255 включительно.")
         self.blue = blue
         self.green = green
