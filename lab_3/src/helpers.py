@@ -30,9 +30,9 @@ class Color:
 
 @dataclass
 class Frame:
-    """Класс хранит отступы."""
+    """Класс хранит отступы в виде чисел-долей изображения от 0 до 1."""
 
-    top: int
-    bottom: int
-    left: int
-    right: int
+    top: float
+    bottom: float
+    left: float
+    right: float
