@@ -17,6 +17,7 @@ def parse_arguments() -> argparse.Namespace:
         "сохранить изображение в файл."
     )
     parser.add_argument("img_path", type=Path, help="Исходное изображение.")
+    parser.add_argument("out_file", type=Path, help="Файл для записи изображения.")
     parser.add_argument(
         "--vertical",
         type=int,
@@ -41,7 +42,6 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument(
         "--channels", type=str, default="BGR", help="Порядок каналов B, G и R."
     )
-    parser.add_argument("out_file", type=Path, help="Файл для записи изображения.")
     args = parser.parse_args()
     if not args.img_path.exists():
         parser.error(f"Файл {args.img_path} не существует.")

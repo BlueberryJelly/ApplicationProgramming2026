@@ -18,8 +18,8 @@ def reflect(img: np.ndarray, vertical: bool = True) -> np.ndarray:
     :return: отражённое изображение
     """
     if vertical:
-        return img[:, ::-1].copy()
-    return img[::-1, :].copy()
+        return img[:, ::-1]
+    return img[::-1, :]
 
 
 def add_frame(img: np.ndarray, color: Color, frame: Frame) -> np.ndarray:
@@ -50,4 +50,4 @@ def mix_channels(img: np.ndarray, order: str = "RGB") -> np.ndarray:
     if order not in COLOR_SPACE:
         raise ValueError(f"Недопустимая последовательность каналов: {order}.")
     indices = [CHANNEL_INDEX[ch] for ch in order]
-    return img[:, :, indices].copy()
+    return img[:, :, indices]
