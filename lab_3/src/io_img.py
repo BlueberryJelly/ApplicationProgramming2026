@@ -9,7 +9,7 @@ ALLOWED_EXTENSIONS = [".jpg"]
 
 def read_img(source: Path) -> np.ndarray:
     """Считать изображение из файла в массив.
-    
+
     :param source: путь к файлу для чтения
     :return img: изображение в виде массива
     :raises ValueError: недопустимое расширение файла-источника
@@ -25,7 +25,7 @@ def read_img(source: Path) -> np.ndarray:
 
 def write_img(dest: Path, img: np.ndarray) -> None:
     """Записать изображение из массива в файл.
-    
+
     :param dest: путь к файлу для записи
     :param img: изображение в виде массива
     :raises ValueError: недопустимое расширение файла для записи

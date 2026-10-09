@@ -2,6 +2,7 @@
 
 from dataclasses import dataclass
 
+
 class Color:
     """Класс хранит данные о цвете в формате BGR."""
 
@@ -14,7 +15,9 @@ class Color:
         :raises ValueError: значение цвета вне диапазона 0–255
         """
         if not (0 <= blue <= 255 and 0 <= green <= 255 and 0 <= red <= 255):
-            raise ValueError("Значение цвета должно быть в диапазоне от 0 до 255 включительно.")
+            raise ValueError(
+                "Значение цвета должно быть в диапазоне от 0 до 255 включительно."
+            )
         self.blue = blue
         self.green = green
         self.red = red

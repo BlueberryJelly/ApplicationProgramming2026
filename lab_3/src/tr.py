@@ -35,9 +35,7 @@ def add_frame(img: np.ndarray, color: Color, frame: Frame) -> np.ndarray:
     left = int(frame.left * img.shape[1])
     right = int(frame.right * img.shape[1])
     return cv2.copyMakeBorder(
-        img, top, bottom, left, right,
-        borderType=cv2.BORDER_CONSTANT,
-        value=color.value
+        img, top, bottom, left, right, borderType=cv2.BORDER_CONSTANT, value=color.value
     )
 
 
