@@ -18,8 +18,8 @@ def reflect(img: np.ndarray, vertical: bool = True) -> np.ndarray:
     :return: отражённое изображение
     """
     if vertical:
-        return img[::-1, :].copy()
-    return img[:, ::-1].copy()
+        return img[:, ::-1].copy()
+    return img[::-1, :].copy()
 
 
 def add_frame(img: np.ndarray, color: Color, frame: Frame) -> np.ndarray:
@@ -37,11 +37,11 @@ def add_frame(img: np.ndarray, color: Color, frame: Frame) -> np.ndarray:
     return cv2.copyMakeBorder(
         img, top, bottom, left, right,
         borderType=cv2.BORDER_CONSTANT,
-        value=color.value,
+        value=color.value
     )
 
 
-def mix_channels(img: np.ndarray, order: str = "BGR") -> np.ndarray:
+def mix_channels(img: np.ndarray, order: str = "RGB") -> np.ndarray:
     """Изменить последовательность каналов изображения.
 
     :param img: изображение в виде массива
