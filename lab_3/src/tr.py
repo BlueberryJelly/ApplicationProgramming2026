@@ -4,7 +4,7 @@
 import numpy as np
 import cv2
 
-from helpers import Color, Frame
+from src.helpers import Color, Frame
 
 COLOR_SPACE = ["RGB", "RBG", "BRG", "BGR", "GBR", "GRB"]
 CHANNEL_INDEX = {"B": 0, "G": 1, "R": 2}
@@ -30,9 +30,12 @@ def add_frame(img: np.ndarray, color: Color, frame: Frame) -> np.ndarray:
     :param frame: отступы рамки
     :return: изображение с наложенной рамкой
     """
+    top = int(frame.top * img.shape[0])
+    bottom = int(frame.bottom * img.shape[0])
+    left = int(frame.left * img.shape[1])
+    right = int(frame.right * img.shape[1])
     return cv2.copyMakeBorder(
-        img, frame.top, frame.bottom,
-        frame.left, frame.right,
+        img, top, bottom, left, right,
         borderType=cv2.BORDER_CONSTANT,
         value=color.value,
     )
