@@ -8,5 +8,6 @@ def show_img(img: np.ndarray) -> None:
     
     :param img: изображение в виде массива
     """
-    plt.imsave(img)
+    plt.imshow(img)
+    plt.axis("off")
     plt.show()
