@@ -1,0 +1,8 @@
+# lab_02
+requests>=2.34.0
+beautifulsoup4>=4.15.0
+
+# lab_03
+numpy>=2.5.0
+opencv-python>=5.0.0.0
+matplotlib>=3.11.0
