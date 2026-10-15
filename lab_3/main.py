@@ -7,8 +7,8 @@
 5) сохранить преобразованное изображение.
 
 Запуск:
-    python main.py img-path --vertical --frame-color
-        --frame-size --channels out-dir
+    python main.py img-path out-dir --vertical 
+    --frame-color --frame-size --channels
 """
 
 from pathlib import Path
@@ -28,11 +28,11 @@ def main() -> int:
     """
     args = parse_arguments()
     img_path: Path = args.img_path
+    out_file: Path = args.out_file
     vertical: bool = bool(args.vertical)
     color: Color = Color(*args.frame_color)
     frame: Frame = Frame(*args.frame_size)
     channels: str = args.channels
-    out_file: Path = args.out_file
 
     img: np.ndarray = read_img(img_path)
     print(img.shape)
