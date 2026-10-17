@@ -34,6 +34,7 @@ def get_img_range(source: Path) -> tuple[int, int, int]:
     :raises FileNotFoundError: файл не найден или не является изображением
     """
     img = cv2.imread(source)
+
     if img is None:
         raise FileNotFoundError(f"Не удалось считать изображение из файла: {source}.")
 
