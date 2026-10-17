@@ -10,6 +10,7 @@ def parse_arguments() -> argparse.Namespace:
     """Разобрать и проверить аргументы командной строки.
 
     :return: пространство имён с атрибутами input_file, output_dir, result_name
+    :raises SystemExit: если переданы некорректные аргументы.
     """
     parser = argparse.ArgumentParser(
         description="Загрузить аннотацию, "
