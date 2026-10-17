@@ -4,8 +4,6 @@
 import numpy as np
 import cv2
 
-from src.helpers import Color, Frame
-
 COLOR_SPACE = ["RGB", "RBG", "BRG", "BGR", "GBR", "GRB"]
 CHANNEL_INDEX = {"B": 0, "G": 1, "R": 2}
 
@@ -22,7 +20,11 @@ def reflect(img: np.ndarray, vertical: bool = True) -> np.ndarray:
     return img[::-1, :]
 
 
-def add_frame(img: np.ndarray, color: Color, frame: Frame) -> np.ndarray:
+def add_frame(
+        img: np.ndarray,
+        color: tuple[int, int, int],
+        frame: tuple[float, float, float, float],
+) -> np.ndarray:
     """Наложить на изображение рамку.
 
     :param img: изображение в виде массива
@@ -30,12 +32,16 @@ def add_frame(img: np.ndarray, color: Color, frame: Frame) -> np.ndarray:
     :param frame: отступы рамки
     :return: изображение с наложенной рамкой
     """
-    top = int(frame.top * img.shape[0])
-    bottom = int(frame.bottom * img.shape[0])
-    left = int(frame.left * img.shape[1])
-    right = int(frame.right * img.shape[1])
+    rel_top, rel_bottom, rel_left, rel_right = frame
+    height, width = img.shape[:2]
+
+    top = int(rel_top * height)
+    bottom = int(rel_bottom * height)
+    left = int(rel_left * width)
+    right = int(rel_right * width)
+
     return cv2.copyMakeBorder(
-        img, top, bottom, left, right, borderType=cv2.BORDER_CONSTANT, value=color.value
+        img, top, bottom, left, right, borderType=cv2.BORDER_CONSTANT, value=color
     )
 
 

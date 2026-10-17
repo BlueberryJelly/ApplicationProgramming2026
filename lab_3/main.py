@@ -17,7 +17,6 @@ from pathlib import Path
 import numpy as np
 
 from src.cli import parse_arguments
-from src.helpers import Color, Frame
 from src.io_img import read_img, write_img
 from src.plotter import show_img
 from src.tr import add_frame, mix_channels, reflect
@@ -40,8 +39,8 @@ def main() -> int:
         img_reflected: np.ndarray = reflect(img, vertical)
         show_img(mix_channels(img_reflected))
 
-        color: Color = Color(*args.frame_color)
-        frame: Frame = Frame(*args.frame_size)
+        color: tuple[int, int, int] = args.frame_color
+        frame: tuple[float, float, float] = args.frame_size
         img_framed: np.ndarray = add_frame(img_reflected, color, frame)
         show_img(mix_channels(img_framed))
 
