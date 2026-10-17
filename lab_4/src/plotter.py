@@ -12,9 +12,10 @@ def plot_histogram(data: pd.DataFrame, plot_file: Path) -> None:
     :param data: таблица с колонкой ranges (объекты Color)
     :param plot_file: путь для сохранения графика
     """
-    b_values = data["ranges"].apply(lambda c: c.blue)
-    g_values = data["ranges"].apply(lambda c: c.green)
-    r_values = data["ranges"].apply(lambda c: c.red)
+    blue, green, red = range(3)
+    b_values = data["ranges"].apply(lambda c: c[blue])
+    g_values = data["ranges"].apply(lambda c: c[green])
+    r_values = data["ranges"].apply(lambda c: c[red])
 
     plt.figure(figsize=(10, 6))
 
