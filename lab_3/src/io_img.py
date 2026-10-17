@@ -1,22 +1,18 @@
 """Чтение изображения из файла и запись изображения в файл."""
 
 from pathlib import Path
+
 import cv2
 import numpy as np
-
-ALLOWED_EXTENSIONS = [".jpg"]
 
 
 def read_img(source: Path) -> np.ndarray:
     """Считать изображение из файла в массив.
 
     :param source: путь к файлу для чтения
-    :return img: изображение в виде массива
-    :raises ValueError: недопустимое расширение файла-источника
+    :return: изображение в виде массива
     :raises FileNotFoundError: ошибка чтения файла-источника
     """
-    if source.suffix not in ALLOWED_EXTENSIONS:
-        raise ValueError(f"Недопустимое расширение файла-источника: {source.suffix}.")
     img = cv2.imread(source)
     if img is None:
         raise FileNotFoundError(f"Не удалось считать изображение из файла: {source}.")
@@ -28,10 +24,11 @@ def write_img(dest: Path, img: np.ndarray) -> None:
 
     :param dest: путь к файлу для записи
     :param img: изображение в виде массива
-    :raises ValueError: недопустимое расширение файла для записи
-    :raises OSError: ошибка записи в файл
+    :raises OSError: не удалось записать в файл или директория не существует
     """
-    if dest.suffix not in ALLOWED_EXTENSIONS:
-        raise ValueError(f"Недопустимое расширение файла для записи: {dest.suffix}.")
+    parent = dest.parent
+    if not parent.exists():
+        raise OSError(f"Директория {parent} не существует.")
+
     if not cv2.imwrite(dest, img):
         raise OSError(f"Не удалось записать изображение в файл: {dest}.")
