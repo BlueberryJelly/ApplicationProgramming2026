@@ -3,24 +3,26 @@
 from dataclasses import dataclass
 
 
+@dataclass(frozen=True, order=True)
 class Color:
-    """Класс хранит данные о цвете в формате BGR."""
+    """Класс хранит данные о цвете в формате BGR.
+    
+    Поддерживает сравнение (лексикографическое: сначала blue, затем green, затем red).
+    """
 
-    def __init__(self, blue: int, green: int, red: int):
-        """Инициализировать поля класса.
+    blue: int
+    green: int
+    red: int
 
-        :param blue: синий цвет
-        :param green: зелёный цвет
-        :param red: красный цвет
+    def __post_init__(self):
+        """Проверить валидность значений после инициализации.
+        
         :raises ValueError: значение цвета вне диапазона 0–255
         """
-        if not (0 <= blue <= 255 and 0 <= green <= 255 and 0 <= red <= 255):
+        if not (0 <= self.blue <= 255 and 0 <= self.green <= 255 and 0 <= self.red <= 255):
             raise ValueError(
                 "Значение цвета должно быть в диапазоне от 0 до 255 включительно."
             )
-        self.blue = blue
-        self.green = green
-        self.red = red
 
     @property
     def value(self) -> tuple[int, int, int]:
@@ -28,7 +30,7 @@ class Color:
 
         :return: кортеж из трёх цветовых каналов BGR
         """
-        return [self.blue, self.green, self.red]
+        return (self.blue, self.green, self.red)
 
 
 @dataclass
