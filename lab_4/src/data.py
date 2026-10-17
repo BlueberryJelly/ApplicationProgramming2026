@@ -80,3 +80,33 @@ def sort_by_ranges(data: pd.DataFrame, ascending: bool = True) -> pd.DataFrame:
         raise KeyError("Отсутствует колонка 'ranges'")
     
     return data.sort_values("ranges", ascending=ascending)
+
+
+def filter_by_ranges(
+    data: pd.DataFrame,
+    min_range: Color,
+    max_range: Color,
+) -> pd.DataFrame:
+    """Отфильтровать DataFrame по диапазонам цветовых каналов.
+
+    Оставляет только те строки, где все три канала (B, G, R) находятся
+    в пределах [min_range, max_range] включительно.
+
+    :param data: DataFrame с колонкой ranges
+    :param min_range: минимальные значения для каналов B, G, R
+    :param max_range: максимальные значения для каналов B, G, R
+    :return: новый DataFrame с отфильтрованными строками
+    :raises KeyError: в DataFrame отсутствует колонка ranges
+    :raises ValueError: min_range больше max_range
+    """
+    if "ranges" not in data.columns:
+        raise KeyError("Отсутствует колонка 'ranges'")
+
+    if min_range > max_range:
+        raise ValueError("Минимальное значение не должно превосходить максимальное.")
+
+    mask = data["ranges"].apply(
+        lambda r: min_range <= r <= max_range
+    )
+    
+    return data[mask]
