@@ -9,3 +9,4 @@ matplotlib>=3.11.0
 
 # lab_04
 PyQt6>=6.11.0
+pandas>=3.0.0
