@@ -17,8 +17,6 @@ def data_from_csv(source: Path) -> pd.DataFrame:
     :param source: путь к csv файлу
     :return: данные в виде DataFrame с колонками absolute_path и relative_path
     :raises FileNotFoundError: файл не найден
-    :raises pd.errors.EmptyDataError: файл пустой
-    :raises pd.errors.ParserError: файл имеет неверную структуру
     """
     if not source.exists():
         raise FileNotFoundError(f"Файл {source} не найден.")
