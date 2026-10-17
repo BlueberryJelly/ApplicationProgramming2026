@@ -64,3 +64,19 @@ def add_range_column(data: pd.DataFrame) -> pd.DataFrame:
         raise KeyError("Отсутствует колонка 'absolute_path'")
     
     return data.assign(ranges=data["absolute_path"].apply(get_img_range))
+
+def sort_by_ranges(data: pd.DataFrame, ascending: bool = True) -> pd.DataFrame:
+    """Отсортировать DataFrame по колонке ranges.
+
+    Сортировка лексикографическая: сначала по диапазону канала B,
+    затем G, затем R (так как ranges — это объект Color из трёх чисел).
+
+    :param data: DataFrame с колонкой ranges
+    :param ascending: если True — по возрастанию, иначе по убыванию
+    :return: новый DataFrame, отсортированный по колонке ranges
+    :raises KeyError: в DataFrame отсутствует колонка ranges
+    """
+    if "ranges" not in data.columns:
+        raise KeyError("Отсутствует колонка 'ranges'")
+    
+    return data.sort_values("ranges", ascending=ascending)
