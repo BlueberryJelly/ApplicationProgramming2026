@@ -30,28 +30,27 @@ def main() -> int:
     """
     try:
         args = parse_arguments()
+
         input_file: Path = args.input_file
-        output_dir: Path = args.output_dir
-
-        output_file: Path = output_dir / f"{input_file.stem} edited{input_file.suffix}"
-
-        vertical: bool = bool(args.vertical)
-        color: Color = Color(*args.frame_color)
-        frame: Frame = Frame(*args.frame_size)
-        channels: str = args.channels
-
         img: np.ndarray = read_img(input_file)
         print(img.shape)
-
-        img_reflected: np.ndarray = reflect(img, vertical)
-        img_framed: np.ndarray = add_frame(img_reflected, color, frame)
-        img_mixed_channels: np.ndarray = mix_channels(img_framed, channels)
-
         show_img(mix_channels(img))
-        show_img(mix_channels(img_reflected))
-        show_img(mix_channels(img_framed))
-        show_img(mix_channels(img_mixed_channels))
 
+        vertical: bool = bool(args.vertical)
+        img_reflected: np.ndarray = reflect(img, vertical)
+        show_img(mix_channels(img_reflected))
+
+        color: Color = Color(*args.frame_color)
+        frame: Frame = Frame(*args.frame_size)
+        img_framed: np.ndarray = add_frame(img_reflected, color, frame)
+        show_img(mix_channels(img_framed))
+
+        channels: str = args.channels
+        img_mixed_channels: np.ndarray = mix_channels(img_framed, channels)
+        show_img(img_mixed_channels)
+
+        output_dir: Path = args.output_dir
+        output_file: Path = output_dir / f"{input_file.stem} edited{input_file.suffix}"
         write_img(output_file, img_mixed_channels)
 
     except FileNotFoundError as error:
