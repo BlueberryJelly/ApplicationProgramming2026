@@ -28,30 +28,39 @@ def main() -> int:
     
     :return: код завершения (0 - успех, 1 - ошибка)
     """
-    args = parse_arguments()
-    input_file: Path = args.input_file
-    output_dir: Path = args.output_dir
-    
-    output_file: Path = output_dir / f"{input_file.stem} edited{input_file.suffix}"
-    
-    vertical: bool = bool(args.vertical)
-    color: Color = Color(*args.frame_color)
-    frame: Frame = Frame(*args.frame_size)
-    channels: str = args.channels
+    try:
+        args = parse_arguments()
+        input_file: Path = args.input_file
+        output_dir: Path = args.output_dir
 
-    img: np.ndarray = read_img(input_file)
-    print(img.shape)
-    
-    img_reflected: np.ndarray = reflect(img, vertical)
-    img_framed: np.ndarray = add_frame(img_reflected, color, frame)
-    img_mixed_channels: np.ndarray = mix_channels(img_framed, channels)
-    
-    show_img(img)
-    show_img(img_reflected)
-    show_img(img_framed)
-    show_img(img_mixed_channels)
-    
-    write_img(output_file, img_mixed_channels)
+        output_file: Path = output_dir / f"{input_file.stem} edited{input_file.suffix}"
+
+        vertical: bool = bool(args.vertical)
+        color: Color = Color(*args.frame_color)
+        frame: Frame = Frame(*args.frame_size)
+        channels: str = args.channels
+
+        img: np.ndarray = read_img(input_file)
+        print(img.shape)
+
+        img_reflected: np.ndarray = reflect(img, vertical)
+        img_framed: np.ndarray = add_frame(img_reflected, color, frame)
+        img_mixed_channels: np.ndarray = mix_channels(img_framed, channels)
+
+        show_img(mix_channels(img))
+        show_img(mix_channels(img_reflected))
+        show_img(mix_channels(img_framed))
+        show_img(mix_channels(img_mixed_channels))
+
+        write_img(output_file, img_mixed_channels)
+
+    except FileNotFoundError as error:
+        print(f"Ошибка: файл не найден или не читается. {error}", file=sys.stderr)
+        return 1
+    except OSError as error:
+        print(f"Ошибка ввода-вывода: {error}", file=sys.stderr)
+        return 1
+
     return 0
 
 
