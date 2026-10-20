@@ -19,7 +19,9 @@ def parse_arguments() -> argparse.Namespace:
         "сохранить изображение в директорию."
     )
     parser.add_argument("input_file", type=Path, help="Путь к изображению.")
-    parser.add_argument("output_dir", type=Path, help="Директория для записи изображения.")
+    parser.add_argument(
+        "output_dir", type=Path, help="Директория для записи изображения."
+    )
     parser.add_argument(
         "--vertical",
         type=int,

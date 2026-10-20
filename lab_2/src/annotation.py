@@ -8,8 +8,9 @@ ABSOLUTE_PATH_COLUMN = "absolute_path"
 RELATIVE_PATH_COLUMN = "relative_path"
 
 
-def write_annotation(paths: Iterable[Path], base_dir: Path,
-                     annotation_path: Path) -> None:
+def write_annotation(
+    paths: Iterable[Path], base_dir: Path, annotation_path: Path
+) -> None:
     """Сохранить абсолютные и относительные пути файлов в CSV.
 
     :param paths: пути к файлам, лежащим внутри base_dir

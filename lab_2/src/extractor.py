@@ -42,8 +42,7 @@ def iter_books(start_url: str) -> Iterator[Book]:
             title = str(link.get("title") or link.get_text(strip=True))
             yield Book(title, urljoin(page_url, str(link["href"])))
         next_link = soup.select_one("li.next a")
-        page_url = (urljoin(page_url, str(next_link["href"]))
-                    if next_link else None)
+        page_url = urljoin(page_url, str(next_link["href"])) if next_link else None
 
 
 def matches_keywords(title: str, keywords: list[str]) -> bool:

@@ -39,7 +39,5 @@ def parse_block(block: str) -> Form:
 
     missing = [label for label, key in LABELS.items() if key not in fields]
     if missing:
-        raise FormParseError(
-            "Не найдены поля: " + ", ".join(missing)
-        )
+        raise FormParseError("Не найдены поля: " + ", ".join(missing))
     return Form(**fields)

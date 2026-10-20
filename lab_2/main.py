@@ -34,8 +34,9 @@ def main() -> int:
 
     :return: код завершения (0 - успех, 1 - ошибка или ничего не найдено)
     """
-    logging.basicConfig(level=logging.INFO,
-                        format="%(asctime)s %(levelname)s %(name)s: %(message)s")
+    logging.basicConfig(
+        level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s"
+    )
     args = parse_arguments()
     out_dir = args.covers_out_dir
     covers_dir = out_dir / COVERS_SUBDIR
@@ -57,8 +58,9 @@ def main() -> int:
         logger.error("Подходящие обложки не найдены.")
         return 1
     if len(paths) < args.covers_amount:
-        logger.warning("Скачано %d из %d запрошенных обложек.",
-                       len(paths), args.covers_amount)
+        logger.warning(
+            "Скачано %d из %d запрошенных обложек.", len(paths), args.covers_amount
+        )
 
     for path in CoverPathIterator(annotation_path):
         print(path)

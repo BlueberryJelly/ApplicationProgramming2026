@@ -52,7 +52,9 @@ def main() -> int:
         print("DataFrame отсортированный по колонке диапазонов цветовых каналов:")
         print(sorted_data)
 
-        filtered_data: pd.DataFrame = filter_by_ranges(sorted_data, MIN_RANGE, MAX_RANGE)
+        filtered_data: pd.DataFrame = filter_by_ranges(
+            sorted_data, MIN_RANGE, MAX_RANGE
+        )
         print("DataFrame отфильтрованный по колонке диапазонов цветовых каналов:")
         print(filtered_data)
 

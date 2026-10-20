@@ -19,10 +19,13 @@ def parse_arguments() -> argparse.Namespace:
         "сохранить результат."
     )
     parser.add_argument("input_file", type=Path, help="Путь к аннотации.")
-    parser.add_argument("output_dir", type=Path, help="Директория для сохранения результата.")
+    parser.add_argument(
+        "output_dir", type=Path, help="Директория для сохранения результата."
+    )
     parser.add_argument(
         "--result-name",
-        type=Path, default="edited.csv",
+        type=Path,
+        default="edited.csv",
         help="Имя для файла с результатом.",
     )
 
@@ -33,7 +36,7 @@ def parse_arguments() -> argparse.Namespace:
     if args.input_file.suffix not in ALLOWED_EXTENSIONS:
         parser.error(
             f"Файл {args.input_file} имеет недопустимое расширение. Ожидается: {ALLOWED_EXTENSIONS}"
-    )
+        )
 
     if not args.output_dir.exists():
         args.output_dir.mkdir(parents=True, exist_ok=True)
@@ -41,6 +44,8 @@ def parse_arguments() -> argparse.Namespace:
         parser.error(f"Путь {args.output_dir} существует, но не является директорией.")
 
     if args.result_name.suffix not in ALLOWED_EXTENSIONS:
-        parser.error(f"Файл результата {args.result_name} имеет недопустимое расширение.")
+        parser.error(
+            f"Файл результата {args.result_name} имеет недопустимое расширение."
+        )
 
     return args

@@ -7,7 +7,7 @@
 5) сохранить преобразованное изображение.
 
 Запуск:
-    python main.py input-file output-dir --vertical 
+    python main.py input-file output-dir --vertical
     --frame-color --frame-size --channels
 """
 
@@ -24,7 +24,7 @@ from src.tr import add_frame, mix_channels, reflect
 
 def main() -> int:
     """Запустить программу.
-    
+
     :return: код завершения (0 - успех, 1 - ошибка)
     """
     try:

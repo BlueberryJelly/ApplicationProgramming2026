@@ -14,20 +14,26 @@ def parse_arguments() -> argparse.Namespace:
     """
     parser = argparse.ArgumentParser(
         description="Скачивание обложек книг с books.toscrape.com. "
-                    "Cкачиваются обложки книг, "
-                    "в названии которых есть хотя бы одно из ключевых слов."
+        "Cкачиваются обложки книг, "
+        "в названии которых есть хотя бы одно из ключевых слов."
     )
     parser.add_argument(
-        "--covers-amount", type=int, default=DEFAULT_COVERS_AMOUNT,
-        help=f"Сколько обложек скачать (по умолчанию {DEFAULT_COVERS_AMOUNT})."
+        "--covers-amount",
+        type=int,
+        default=DEFAULT_COVERS_AMOUNT,
+        help=f"Сколько обложек скачать (по умолчанию {DEFAULT_COVERS_AMOUNT}).",
     )
     parser.add_argument(
-        "--keywords", nargs="*", type=str,
-        help="Одно или несколько ключевых слов для поиска в названии."
+        "--keywords",
+        nargs="*",
+        type=str,
+        help="Одно или несколько ключевых слов для поиска в названии.",
     )
     parser.add_argument(
-        "--covers-out-dir", type=Path, required=True,
-        help="Папка для обложек и CSV-аннотации (создаётся при отсутствии)."
+        "--covers-out-dir",
+        type=Path,
+        required=True,
+        help="Папка для обложек и CSV-аннотации (создаётся при отсутствии).",
     )
     args = parser.parse_args()
 
@@ -37,6 +43,5 @@ def parse_arguments() -> argparse.Namespace:
         parser.error("--covers-out-dir должен быть директорией.")
 
     if args.keywords is not None:
-        args.keywords = [word.strip().lower() for word in args.keywords
-                         if word.strip()]
+        args.keywords = [word.strip().lower() for word in args.keywords if word.strip()]
     return args

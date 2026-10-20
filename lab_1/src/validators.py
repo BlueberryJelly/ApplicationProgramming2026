@@ -50,8 +50,7 @@ def is_valid_date(value: str) -> bool:
 def is_valid_contact(value: str) -> bool:
     """Проверить номер телефона или email."""
     return (
-        PHONE_RE.fullmatch(value) is not None
-        or EMAIL_RE.fullmatch(value) is not None
+        PHONE_RE.fullmatch(value) is not None or EMAIL_RE.fullmatch(value) is not None
     )
 
 
@@ -76,7 +75,4 @@ def validate_form(form: Form) -> None:
     )
     for label, value, check in checks:
         if not check(value):
-            raise FormValidationError(
-                f"Некорректное поле '{label}': '{value}'"
-            )
-        
+            raise FormValidationError(f"Некорректное поле '{label}': '{value}'")

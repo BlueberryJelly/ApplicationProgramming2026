@@ -58,9 +58,7 @@ class CoverPathIterator:
         with annotation_path.open("r", encoding="utf-8", newline="") as file:
             reader = csv.DictReader(file)
             if ABSOLUTE_PATH_COLUMN not in (reader.fieldnames or []):
-                raise ValueError(
-                    f"В аннотации нет колонки '{ABSOLUTE_PATH_COLUMN}'."
-                )
+                raise ValueError(f"В аннотации нет колонки '{ABSOLUTE_PATH_COLUMN}'.")
             for row in reader:
                 raw_path = (row[ABSOLUTE_PATH_COLUMN] or "").strip()
                 if raw_path:

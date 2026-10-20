@@ -19,9 +19,20 @@ def plot_histogram(data: pd.DataFrame, plot_file: Path) -> None:
 
     plt.figure(figsize=(10, 6))
 
-    plt.hist(b_values, bins=20, alpha=0.5, color='blue', label='Blue (B)', edgecolor='black')
-    plt.hist(g_values, bins=20, alpha=0.5, color='green', label='Green (G)', edgecolor='black')
-    plt.hist(r_values, bins=20, alpha=0.5, color='red', label='Red (R)', edgecolor='black')
+    plt.hist(
+        b_values, bins=20, alpha=0.5, color="blue", label="Blue (B)", edgecolor="black"
+    )
+    plt.hist(
+        g_values,
+        bins=20,
+        alpha=0.5,
+        color="green",
+        label="Green (G)",
+        edgecolor="black",
+    )
+    plt.hist(
+        r_values, bins=20, alpha=0.5, color="red", label="Red (R)", edgecolor="black"
+    )
 
     plt.title("Распределение диапазонов значений по цветовым каналам")
     plt.xlabel("Диапазон значений (max - min)")

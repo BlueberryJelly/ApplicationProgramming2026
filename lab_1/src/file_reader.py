@@ -21,11 +21,8 @@ def read_file(filename: str) -> str:
     except PermissionError as error:
         raise FileReadError(f"Нет доступа к файлу '{filename}'") from error
     except UnicodeDecodeError as error:
-        raise FileReadError(
-            f"Файл '{filename}' не в кодировке UTF-8"
-        ) from error
+        raise FileReadError(f"Файл '{filename}' не в кодировке UTF-8") from error
     except OSError as error:
         raise FileReadError(
             f"Не удалось прочитать файл '{filename}': {error}"
         ) from error
-    

@@ -29,9 +29,7 @@ class NameCounter:
             return []
         max_count = max(self._counter.values())
         return [
-            (name, count)
-            for name, count in self._counter.items()
-            if count == max_count
+            (name, count) for name, count in self._counter.items() if count == max_count
         ]
 
 

@@ -21,9 +21,9 @@ def reflect(img: np.ndarray, vertical: bool = True) -> np.ndarray:
 
 
 def add_frame(
-        img: np.ndarray,
-        color: tuple[int, int, int],
-        frame: tuple[float, float, float, float],
+    img: np.ndarray,
+    color: tuple[int, int, int],
+    frame: tuple[float, float, float, float],
 ) -> np.ndarray:
     """Наложить на изображение рамку.
 

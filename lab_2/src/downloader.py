@@ -16,8 +16,7 @@ DEFAULT_SUFFIX = ".jpg"
 MAX_FILENAME_LENGTH = 120
 
 
-def make_safe_filename(title: str,
-                       max_length: int = MAX_FILENAME_LENGTH) -> str:
+def make_safe_filename(title: str, max_length: int = MAX_FILENAME_LENGTH) -> str:
     """Убрать из названия символы, недопустимые в именах файлов.
 
     :param title: название книги
@@ -63,8 +62,7 @@ def download_cover(cover: Cover, folder: Path) -> Path:
     return path
 
 
-def download_covers(covers: Iterable[Cover], folder: Path,
-                    limit: int) -> list[Path]:
+def download_covers(covers: Iterable[Cover], folder: Path, limit: int) -> list[Path]:
     """Скачивать обложки, пока не наберётся нужное количество.
 
     Неудачные загрузки пропускаются и не засчитываются в лимит.

@@ -4,15 +4,11 @@ import re
 
 BLOCK_SEPARATOR_RE: re.Pattern[str] = re.compile(r"\n\s*\n")
 
-FIELD_RE: re.Pattern[str] = re.compile(
-    r"^([^:\n]+):[ \t]*(.*)$", re.MULTILINE
-)
+FIELD_RE: re.Pattern[str] = re.compile(r"^([^:\n]+):[ \t]*(.*)$", re.MULTILINE)
 
 NAME_RE: re.Pattern[str] = re.compile(r"^[А-ЯЁ][а-яё]+(?:-[А-ЯЁ][а-яё]+)*$")
 
-GENDER_RE: re.Pattern[str] = re.compile(
-    r"^(?:Мужской|мужской|Женский|женский|[МмЖж])$"
-)
+GENDER_RE: re.Pattern[str] = re.compile(r"^(?:Мужской|мужской|Женский|женский|[МмЖж])$")
 
 DATE_RE: re.Pattern[str] = re.compile(
     r"(?P<day>0?[1-9]|[12]\d|3[01])"
@@ -34,6 +30,4 @@ EMAIL_RE: re.Pattern[str] = re.compile(
     r"^[A-Za-z0-9._%+-]{1,64}@(?:gmail\.com|mail\.ru|yandex\.ru)$"
 )
 
-CITY_RE: re.Pattern[str] = re.compile(
-    r"^(?:г\. )?[А-ЯЁ][а-яё]+(?:[- ][А-ЯЁ][а-яё]+)*$"
-)
+CITY_RE: re.Pattern[str] = re.compile(r"^(?:г\. )?[А-ЯЁ][а-яё]+(?:[- ][А-ЯЁ][а-яё]+)*$")
