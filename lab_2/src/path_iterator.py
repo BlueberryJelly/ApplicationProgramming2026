@@ -4,7 +4,7 @@ import csv
 from collections.abc import Iterator
 from pathlib import Path
 
-from src.annotation import ABSOLUTE_PATH_COLUMN
+from .annotation import ABSOLUTE_PATH_COLUMN
 
 IMAGE_SUFFIXES = {".jpg"}
 
