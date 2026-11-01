@@ -94,7 +94,7 @@ class MainWindow(QMainWindow):
             не удалось прочитать, причина выводится в строку состояния
         """
         try:
-            return self._paths.__next__()
+            return next(self._paths)
         except StopIteration:
             self._stop("Достигнут конец датасета")
         except SOURCE_ERRORS as error:
