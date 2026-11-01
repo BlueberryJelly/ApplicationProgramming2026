@@ -3,7 +3,6 @@
 Интерфейс описан в main_window.ui, логика - main_window.py.
 """
 
-from collections.abc import Iterator
 from pathlib import Path
 
 from PyQt6 import uic
@@ -25,7 +24,7 @@ class MainWindow(QMainWindow):
         super().__init__()
         uic.loadUi(UI_FILE, self)
 
-        self._paths: Iterator[Path] = iter(())
+        self._paths: CoverPathIterator | None = None
         self._history: list[Path] = []
         self._position = -1
         self._pixmap: QPixmap | None = None
@@ -69,6 +68,7 @@ class MainWindow(QMainWindow):
         self._position = -1
         self._pixmap = None
         self.image.clear()
+        self.leftArrow.setEnabled(False)
         self.show_next()
 
     def show_next(self) -> None:
@@ -94,7 +94,7 @@ class MainWindow(QMainWindow):
             не удалось прочитать, причина выводится в строку состояния
         """
         try:
-            return next(self._paths)
+            return self._paths.__next__()
         except StopIteration:
             self._stop("Достигнут конец датасета")
         except SOURCE_ERRORS as error:
